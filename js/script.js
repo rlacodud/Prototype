@@ -582,10 +582,10 @@ $('.input-area').on('keyup', function (e) {
     enterText = changeText.replaceAll("\n", "<br>");
     // drag-text의 내용을 input-area에 입력되어있던 값으로 변경
     $('.dc_drag-area-text.on .dc_drag-text .dc_text').html(enterText);
+  } else {
+    // drag-text의 내용을 input-area에 입력되어있던 값으로 변경
+    $('.dc_drag-area-text.on .dc_drag-text .dc_text').html(changeText);
   }
-
-  // drag-text의 내용을 input-area에 입력되어있던 값으로 변경
-  $('.dc_drag-area-text.on .dc_drag-text .dc_text').html(changeText);
 
   // 현재 생성된 drag-area-text의 text El을 thisText에 대입
   thisText = $('.dc_drag-area-text.on .dc_drag-text .dc_text');
