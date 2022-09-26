@@ -1,15 +1,13 @@
 @media (hover: hover) {
 /* hover 가능한 경우 */
 
+/* 공통 속성 */
+html, body {width: 100%; height: 100%; font-size: 20px;}
 button {background-color: transparent; border: none; cursor: pointer;}
 input {display: none;}
-html, body {width: 100%; height: 100%; font-size: 20px;}
-.dc_wrap {width: 1920px; position: relative; border: 1px solid gray; margin: 0 auto;}
-.dc_close {background: transparent; color: #fff; font-size: 20px; position: absolute; right: 0; top: 5px; cursor: pointer; border: none;}
 .blind--pc {display: none;}
 
 /* 공통 background-image 속성 */
-.dc_background-image,
 input[type="radio"]:checked + label,
 .dc_back-image--container .dc_back-image--list .dc_back-image input + label {background-position: center; background-size: cover; object-fit: cover; background-repeat: no-repeat;}
 
@@ -17,6 +15,9 @@ input[type="radio"]:checked + label,
 .dc_pop {width: 100%; z-index: 4000; transition: all 0.3s ease-in-out;}
 .dc_pop::-webkit-scrollbar {display: none;}
 .dc_pop.active {bottom: 0%; display: block;}
+
+/* dc_wrap */
+.dc_wrap {width: 1920px; position: relative; border: 1px solid gray; margin: 0 auto;}
 
 /* dc_guid-text--container */
 .dc_guid-text--container {background-color: gray; width: 100%; height: 150px; position: absolute; top: 0; left: 0; z-index: 10000;}
@@ -128,14 +129,13 @@ input[type="radio"]:checked + label,
 }
 
 @media (hover: none) and (pointer: coarse) {
-/* @media only screen and (min-width : 500px) { */
-
+    
+    /* 공통 속성 */
+    html, body {width: 100vw; height: 100vh; border: 1px solid #000;}
     button {background-color: transparent; border: none; cursor: pointer;}
     input {display: none;}
-    html, body {width: 100vw; height: 100vh; border: 1px solid #000;}
-    .dc_wrap {width: 100%; height: 100%; position: relative;}
-    .dc_close {background: transparent; color: #fff; font-size: 20px; position: absolute; right: 0; top: 5px; cursor: pointer; border: none;}
     .blind--mobile {display: none;}
+    .dc_close {background: transparent; color: #fff; font-size: 20px; position: absolute; right: 0; top: 5px; cursor: pointer; border: none;}
     
     /* 공통 background-image 속성 */
     .dc_background-image,
@@ -147,6 +147,9 @@ input[type="radio"]:checked + label,
     .dc_pop::-webkit-scrollbar {display: none;}
     .dc_pop.active {bottom: 0%; display: block;}
     
+    /* dc_wrap */
+    .dc_wrap {width: 100%; height: 100%; position: relative;}
+
     /* dc_guid-text--container */
     .dc_guid-text--container {width: 100%; height: calc(100vw * 5 / 4); position: absolute; top: 0; left: 0; z-index: 10000; background-color: rgba(0, 0, 0, 0.8);}
     .dc_guid-text--container.off {display: none;}
