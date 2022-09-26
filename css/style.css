@@ -175,8 +175,9 @@ input[type="radio"]:checked + label,
     .dc_down-button--container .dc_down-button {width: 100%;text-align: center; color: #fff; font-size: 16px; font-weight: bold; line-height: 60px;}
     
     /* dc_back-image--list */
-    .dc_back-image--container .dc_back-image--list {width: calc(100% - 20px); height: 785px; position: absolute; margin: 0 10px; margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 3px; grid-row-gap: 14px;}
-    .dc_back-image--container .dc_back-image--list .dc_back-image input + label{display: inline-block; position: relative; width: 134px; min-height: 289px; cursor: pointer;}
+    .dc_back-image--container .dc_back-image--list {width: calc(100% - 20px); height: calc(); position: absolute; margin: 0 10px; margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 3px; grid-row-gap: 14px;}
+    .dc_back-image--container .dc_back-image--list .dc_back-image {width: 100%;}
+    .dc_back-image--container .dc_back-image--list .dc_back-image input + label{display: inline-block; position: relative; width: 100%; min-height: 100%; cursor: pointer;}
     .dc_back-image--container .dc_back-image--list .dc_back-image input[type="radio"]#image1 + label,
     .dc_back-image--container .dc_back-image--list .dc_back-image input[type="radio"]#image3 + label,
     .dc_back-image--container .dc_back-image--list .dc_back-image input[type="radio"]#image5 + label,
@@ -232,10 +233,8 @@ input[type="radio"]:checked + label,
     /* dc_tool--container dc_button-icon */
     .dc_tool--container .dc_image-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_background_color.svg);}
     .dc_tool--container .dc_upload-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_background_image.svg);}
-    .dc_tool--container .dc_sticker-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_icon.svg); filter: grayscale(); background-color: gray;}
-    .dc_tool--container .dc_text-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_text.svg); filter: grayscale(); background-color: gray;}
-    .dc_tool--container .dc_sticker-button .dc_button-icon.active,
-    .dc_tool--container .dc_text-button .dc_button-icon.active {filter: none; background-color: transparent;}
+    .dc_tool--container .dc_sticker-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_icon.svg);}
+    .dc_tool--container .dc_text-button .dc_button-icon {display: inline-block; width: 48px; height: 48px; background-image: url(../images/button/button_text.svg);}
     
     /* remove, edit, option */
     .dc_drag-area.on .dc_remove,

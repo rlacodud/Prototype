@@ -60,38 +60,35 @@ $('.dc_close').on('click touchstart', function () {
 })
 
 // 꾸미기 시작하기 버튼 클릭 시
-$('.dc_down-button').on('click touchstart', function () {
-  // 모바일일 경우
-  if (Mobile()) {
-    // 가이드 화면 display none
-    $('.dc_guid-text--container').addClass('off');
-    // isGuid false로 변경
-    isGuid = false;
-    // 버튼 텍스트 변경
-    $('.dc_down-button').text('사진 저장하고 이벤트 응모하기');
-  }
+// ====모바일====
+$('.dc_down-button').on('touchstart', function () {
+  // 가이드 화면 display none
+  $('.dc_guid-text--container').addClass('off');
+  // isGuid false로 변경
+  isGuid = false;
+  // 버튼 텍스트 변경
+  $('.dc_down-button').text('사진 저장하고 이벤트 응모하기');
   // 스티커, 텍스트 요소가 없을 시
   if (!isDeco) {
     // alert 제공
     alert('배경화면 꾸며주세요!')
     // 스티커, 텍스트 요소가 있을 경우
-  } else {
     // reset 호출
     reset();
 
     // 이미지 다운로드
-    domtoimage.toBlob(document.querySelector('.dc_deco-zone'))
-      .then(function (blob) {
-        window.saveAs(blob, 'image__.png');
-      });
+    // domtoimage.toBlob(document.querySelector('.dc_deco-zone'))
+    //   .then(function (blob) {
+    //     window.saveAs(blob, 'image__.png');
+    //   });
   }
 })
 
 // Background Image------------------------------------------------------------------------------------
 // ====모바일====
 // 이미지 툴 버튼 클릭 시
-$('.dc_image-button').off().on('click', function (e) {
-  console.log('클릭 확인')
+$('.dc_image-button').off().on('touchstart', function (e) {
+  console.log('되나', isGuid)
   e.stopPropagation();
   // 가이드가 해제되었을 때
   if (!isGuid) {
@@ -107,7 +104,6 @@ $('.dc_image-button').off().on('click', function (e) {
 // ====PC, 모바일 공통 기능====
 // 각 이미지 클릭 시
 $('.dc_back-image label').off().on('click', function (e) {
-  console.log('이미지 버튼 클릭 확인')
   // 이벤트 버블링 방지
   e.stopPropagation()
   // reset 호출
@@ -298,12 +294,12 @@ $('.dc_sticker button').on('mousedown touchstart', function (e) {
     e.stopPropagation();
     // reset 호출
     reset();
-  
+
     // 선택한 dc_drag-area에 on class 부여(tool 활성화)
     $(this).addClass('on');
     // 선택한 dc_drag-area를 dc_deco-zone의 맨 마지막에 삽입(최상위 객체로 전환)
     $(this).appendTo($('.dc_deco-zone'));
-  
+
     // 현재 선택된 element를 thisDrag로 정의
     let thisDrag = $(this);
     // remove 버튼 클릭 시
@@ -311,7 +307,7 @@ $('.dc_sticker button').on('mousedown touchstart', function (e) {
       // 현재 선택된 element 제거
       thisDrag.remove();
     })
-});
+  });
 })
 
 // Text----------------------------------------------------------------
@@ -503,7 +499,7 @@ $('.dc_text-button').on('touchstart', function (e) {
       e.stopPropagation();
 
       // dc_input--container 활성화
-      $('.dc_input--container').addClass('active')      
+      $('.dc_input--container').addClass('active')
     })
     // option 버튼 클릭 시
     $(this).find('.dc_option').on('click touchstart', function (e) {
@@ -557,7 +553,7 @@ $('.dc_text-size input').off('click touchstart').on('click touchstart', function
   sizeVal = $(this).val();
   // text에 적용
   $('.dc_drag-area-text.on .dc_drag-text .dc_text').css('font-size', `${sizeVal}`);
-  
+
   // 현재 생성된 drag-area-text의 text El을 thisText에 대입
   thisText = $('.dc_drag-area-text.on .dc_drag-text .dc_text');
   // 입력된 text의 크기만큼 툴바의 크기가 정의되도록
@@ -603,6 +599,23 @@ $('.input-area').on('keyup', function (e) {
 if (Mobile()) {
   // 모바일일 경우
 } else {// 모바일 외
+  // 꾸미기 시작하기 버튼 클릭 시
+  $('.dc_down-button').on('click', function () {
+    // 스티커, 텍스트 요소가 없을 시
+    if (!isDeco) {
+      // alert 제공
+      alert('배경화면 꾸며주세요!')
+      // 스티커, 텍스트 요소가 있을 경우
+      // reset 호출
+      reset();
+    } else {
+      // 이미지 다운로드
+      // domtoimage.toBlob(document.querySelector('.dc_deco-zone'))
+      //   .then(function (blob) {
+      //     window.saveAs(blob, 'image__.png');
+      //   });
+    }
+  })
   // 버튼 텍스트 변경
   $('.dc_down-button').text('사진 저장하고 이벤트 응모하기');
 
@@ -664,7 +677,7 @@ if (Mobile()) {
       // 받아온 font-size로 해당 font-size 체크
       thisSizeVal = 'input[type="radio"]#' + thisSizeVal;
       $(thisSizeVal).prop('checked', true);
-    })                               
+    })
   })
 }
 
