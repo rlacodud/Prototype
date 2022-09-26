@@ -77,18 +77,19 @@ $('.dc_down-button').on('touchstart', function () {
     reset();
 
     // 이미지 다운로드
-    // domtoimage.toBlob(document.querySelector('.dc_deco-zone'))
-    //   .then(function (blob) {
-    //     window.saveAs(blob, 'image__.png');
-    //   });
   }
+})
+
+$('.dc_deco-zone').on('click touchstart', function(e) {
+  e.stopPropagation();
+  reset();
+  textReset();
 })
 
 // Background Image------------------------------------------------------------------------------------
 // ====모바일====
 // 이미지 툴 버튼 클릭 시
 $('.dc_image-button').off().on('touchstart', function (e) {
-  console.log('되나', isGuid)
   e.stopPropagation();
   // 가이드가 해제되었을 때
   if (!isGuid) {
@@ -443,7 +444,7 @@ function createText(e) {
 // 텍스트 입력 완료 시
 function inputDone() {
   // 빈 칸이 아닌 경우에만
-  if (changeText !== null) {
+  if (changeText !== null || prevText !== null) {
     // input-container 비활성화
     $('.dc_input--container').removeClass('active');
 
@@ -556,6 +557,9 @@ $('.dc_text-size input').off('click touchstart').on('click touchstart', function
 
   // 현재 생성된 drag-area-text의 text El을 thisText에 대입
   thisText = $('.dc_drag-area-text.on .dc_drag-text .dc_text');
+  let thisDrag = $('.dc_drag-area-text.on .dc_drag-text');
+  thisDrag.width('auto');
+  thisDrag.height('auto');
   // 입력된 text의 크기만큼 툴바의 크기가 정의되도록
   // text의 너비와 높이를 구한 뒤 thisTextWidth와 thisTextHeight에 대입
   thisTextWidth = thisText.width();
@@ -610,10 +614,6 @@ if (Mobile()) {
       reset();
     } else {
       // 이미지 다운로드
-      // domtoimage.toBlob(document.querySelector('.dc_deco-zone'))
-      //   .then(function (blob) {
-      //     window.saveAs(blob, 'image__.png');
-      //   });
     }
   })
   // 버튼 텍스트 변경
